@@ -8,46 +8,71 @@
         public const SE = 3;
         protected array $cases ;
 
-        /**
-         * @param array $cases
-         */
+
         public function __construct()
         {
-            //TODO
+            for ($i = 0 ; $i < self::NBROWS ; $i++){
+                $this->cases[] = new ArrayPieceQuantik();
+            }
+
+
         }
 
         public function getPiece(int $rowNum , int $colNum) : PieceQuantik{
+            if ($rowNum >= self::NBROWS){
+                $rowNum = self::NBROWS-1;
+            }
+            if ($colNum >= self::NBCOLS){
+                $colNum = self::NBCOLS-1;
+            }
 
-            //TODO
+            if ($rowNum < 0){
+                $rowNum = 0;
+            }
+            if ($colNum < 0){
+                $colNum = 0;
+            }
 
-            return new PieceQuantik();
+            return $this->cases[$rowNum][$colNum];
         }
 
-        public function setPiece(int $rowNum , int $colNum) : void{
+        public function setPiece(int $rowNum , int $colNum , PieceQuantik $pieceQuantik) : void{
 
-            //TODO
+            $this->cases[$rowNum][$colNum]=$pieceQuantik;
 
         }
 
         public function getRow(int $numRow) : ArrayPieceQuantik{
 
-            //TODO
+            return $this->cases[$numRow];
 
-            return new ArrayPieceQuantik();
         }
 
         public function getCol(int $numCol) : ArrayPieceQuantik{
 
-            //TODO
+            $res = new ArrayPieceQuantik();
 
-            return new ArrayPieceQuantik();
+            for ($i = 0 ; $i < self::NBROWS ;$i++)
+            {
+                $res->setPieceQuantik($i,$this->cases[$i][$numCol]);
+            }
+
+            return $res;
         }
 
         public function getCorner(int $dir) : ArrayPieceQuantik{
 
-            //TODO
+            $res = new ArrayPieceQuantik();
+            $taille = 0;
+            for ($i = 0 ; $i < self::NBROWS ; $i++){
+                for ($j = 0 ; $j < self::NBCOLS ; $j++){
+                    if ($dir == self::getCornerFromCoord($i,$j)){
+                        $res->setPieceQuantik($taille,$this->cases[$i][$j]);
+                    }
+                }
+            }
 
-            return new ArrayPieceQuantik();
+            return $res;
         }
 
         public function __toString()
@@ -58,9 +83,25 @@
 
         public static function getCornerFromCoord(int $rowNum,int $rowCol): int {
 
-            //TODO
-
-            return 0;
+            if ($rowNum<=1){
+                //on est au nord
+                if ($rowCol<=1){
+                    //on est à l'ouest
+                    return self::NW;
+                }else{
+                    //on est à l'est
+                    return self::NE;
+                }
+            } else {
+                //on est au sud
+                if ($rowCol<=1){
+                    //on est à l'ouest
+                    return self::SW;
+                }else{
+                    //on est à l'est
+                    return self::SE;
+                }
+            }
         }
 
 
