@@ -32,35 +32,35 @@
         
     }
 
-    public static function &initWhiteCube() {
+    public static function initWhiteCube() {
         return new self(self::CUBE, self::WHITE);
     }
 
-    public static function &initBlackCube() : PieceQuantik {
+    public static function initBlackCube() : PieceQuantik {
         return new self(self::CUBE, self::BLACK);
     }
 
-    public static function &initWhiteCone() : PieceQuantik {
+    public static function initWhiteCone() : PieceQuantik {
         return new self(self::CONE, self::WHITE);
     }
 
-    public static function &initBlackCone() : PieceQuantik {
+    public static function initBlackCone() : PieceQuantik {
         return new self(self::CONE, self::BLACK);
     }
 
-    public static function &initWhiteCylindre() : PieceQuantik {
+    public static function initWhiteCylindre() : PieceQuantik {
         return new self(self::CYLINDRE, self::WHITE);
     }
 
-    public static function &initBlackCylindre() : PieceQuantik {
+    public static function initBlackCylindre() : PieceQuantik {
         return new self(self::CYLINDRE, self::BLACK);
     }
     
-    public static function &initWhiteSphere() : PieceQuantik {
+    public static function initWhiteSphere() : PieceQuantik {
         return new self(self::SPHERE, self::WHITE);
     }
 
-    public static function &initBlackSphere() : PieceQuantik {
+    public static function initBlackSphere() : PieceQuantik {
         return new self(self::SPHERE, self::BLACK);
     }
 }
