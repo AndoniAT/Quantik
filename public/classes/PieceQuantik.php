@@ -1,12 +1,12 @@
 <?php
- class PieceQuantik {
-    static public int $white = 0;
-    static public int $black = 0;
-    static public int $void = 0;
-    static public int $cube = 1;
-    static public int $cone = 2;
-    static public int $cylindre = 3;
-    static public int $sphere = 4;
+ class PieceQuantik {     
+    public const  WHITE = 0;
+    public const  BLACK = 0;
+    public const  VOID = 0;
+    public const  CUBE = 1;
+    public const  CONE = 2;
+    public const  CYLINDRE = 3;
+    public const  SPHERE = 4;
     protected int $forme;
     protected int $couleur;
 
