@@ -11,14 +11,13 @@
             for($i = 0 ; $i < $this->taille ; $i++) {
                 $this->piecesQuantiks[] = PieceQuantik::initVoid();
             }
-            echo $this;
         }
 
         public function __toString() : string {
             $affichage="";
             
             foreach($this->piecesQuantiks as $elem){
-                $affichage = $affichage . " " . $elem;
+                $affichage = $affichage . " " . $elem . "<br>";
             }
 
             return $affichage;
@@ -70,12 +69,9 @@
         }
 
         public static function initPiecesBlanches() : ArrayPieceQuantik {
-            echo 'hh';
-
             $array = new ArrayPieceQuantik();
             $array->setPieceQuantik(0, PieceQuantik::initWhiteCone());
-            
-            /*$array->setPieceQuantik(1, PieceQuantik::initWhiteCone());
+            $array->setPieceQuantik(1, PieceQuantik::initWhiteCone());
 
             $array->setPieceQuantik(2, PieceQuantik::initWhiteCube());
             $array->setPieceQuantik(3, PieceQuantik::initWhiteCube());
@@ -85,15 +81,10 @@
 
             $array->addPieceQuantik(PieceQuantik::initWhiteSphere());
             $array->addPieceQuantik(PieceQuantik::initWhiteSphere());
-            */
-            //$array->setTaille(8);
+            
+            $array->setTaille(8);
 
             return $array;
         }
     }
-
-    $tab_Vide = new ArrayPieceQuantik();
-    //echo $tab_Vide;
-    $tab_Vide = ArrayPieceQuantik::initPiecesBlanches();
-    //echo $tab_Vide;
 ?>
