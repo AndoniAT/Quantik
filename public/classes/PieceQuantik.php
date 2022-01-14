@@ -24,7 +24,7 @@
     }
 
     public function __toString() : string {
-        return $this->forme + $this->couleur;
+        return $this->forme . " " . $this->couleur;
     }
 
     public static function initVoid() : PieceQuantik {
