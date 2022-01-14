@@ -20,7 +20,7 @@
     }
 
     public function getCouleur() : int {
-        return $this->couuleur;
+        return $this->couleur;
     }
 
     public function __toString() : string {
