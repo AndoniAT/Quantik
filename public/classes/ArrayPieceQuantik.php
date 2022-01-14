@@ -54,7 +54,7 @@
         public static function initPiecesNoires() : ArrayPieceQuantik {
             $array = new ArrayPieceQuantik();
             $array->setTaille(8);
-            $piece = new PieceQuantik(0,0);
+            PieceQuantik::initBlackCone();
             $piece->initBlackCone()
 
             for($i = 1 ; $i <= $array->getTaille() ; $i++) {
