@@ -8,11 +8,12 @@
         public function __construct() {
             $this->taille = 4;
 
-            for($i = 0 ; $i < $this->taille ; $i++) {
-                $obj = new PieceQuantik(0,0);
-                $obj = $obj->initVoid();
-                $this->piecesQuantiks[] = $obj;
-            }
+            //for($i = 0 ; $i < $this->taille ; $i++) {
+            $piece = PieceQuantik::initVoid();
+                //echo $piece;
+                //$this->piecesQuantiks[] = $piece;
+            //}
+            //echo $this->piecesQuantiks[0];
         }
 
         public function __toString() : string {
@@ -53,30 +54,43 @@
 
         public static function initPiecesNoires() : ArrayPieceQuantik {
             $array = new ArrayPieceQuantik();
-            $array->setTaille(8);
-            PieceQuantik::initBlackCone();
-            $piece->initBlackCone()
+            $array->setPieceQuantik(0, PieceQuantik::initBlackCone());
+            $array->setPieceQuantik(0, PieceQuantik::initBlackCone());
 
-            for($i = 1 ; $i <= $array->getTaille() ; $i++) {
-                for($j = 0 ; $j < 2 ; $j++) {
-                    $piece = new PieceQuantik($i, 1);
-                    $array->addPieceQuantik($piece);
-                    print_r($piece->getCouleur());
-                }
-            }
+            $array->setPieceQuantik(2, PieceQuantik::initBlackCube());
+            $array->setPieceQuantik(2, PieceQuantik::initBlackCube());
+
+            $array->addPieceQuantik(PieceQuantik::initBlackCylindre());
+            $array->addPieceQuantik(PieceQuantik::initBlackCylindre());
+
+            $array->addPieceQuantik(PieceQuantik::initBlackSphere());
+            $array->addPieceQuantik(PieceQuantik::initBlackSphere());
+
+            $array->setTaille(8);
+            
             return $array;
         }
 
         public static function initPiecesBlanches() : ArrayPieceQuantik {
             $array = new ArrayPieceQuantik();
+            $array->setPieceQuantik(0, PieceQuantik::initWhiteCone());
+            $array->setPieceQuantik(1, PieceQuantik::initWhiteCone());
+
+            $array->setPieceQuantik(2, PieceQuantik::initWhiteCube());
+            $array->setPieceQuantik(3, PieceQuantik::initWhiteCube());
+
+            $array->addPieceQuantik(PieceQuantik::initWhiteCylindre());
+            $array->addPieceQuantik(PieceQuantik::initWhiteCylindre());
+
+            $array->addPieceQuantik(PieceQuantik::initWhiteSphere());
+            $array->addPieceQuantik(PieceQuantik::initWhiteSphere());
+
             $array->setTaille(8);
 
-            for($i = 1 ; $i <= 4 ; $i++) {
-                for($j = 0 ; $j < 2 ; $j++) {
-                    $array->addPieceQuantik(new PieceQuantik($i, 0));
-                }
-            }
             return $array;
         }
     }
+
+    $tab_Vide = new ArrayPieceQuantik();
+    //echo $tab_Vide;
 ?>
