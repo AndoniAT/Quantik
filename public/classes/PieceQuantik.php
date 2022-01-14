@@ -1,7 +1,7 @@
 <?php
  class PieceQuantik {     
     public const  WHITE = 0;
-    public const  BLACK = 0;
+    public const  BLACK = 1;
     public const  VOID = 0;
     public const  CUBE = 1;
     public const  CONE = 2;
@@ -24,12 +24,52 @@
     }
 
     public function __toString() : string {
-        return $this->forme . " " . $this->couleur;
+        $str = "Forme : ";
+
+        switch($this->getForme()){
+            case self::CUBE : {
+                            $str = $str . "CUBE";
+                            break;
+                        }
+            case self::CONE : {
+                            $str = $str . "CONE";
+                            break;
+                        }
+            case self::CYLINDRE : {
+                            $str = $str . "CYLINDRE";
+                            break;
+                        }
+            case self::SPHERE : {
+                            $str = $str . "SPHERE";
+                            break;
+                        }
+            default : {
+                        $str = $str . "0";
+                        break;
+                    }
+        };
+
+        $str = $str . "  Couleur : ";
+
+        switch($this->getCouleur()){
+            case self::WHITE : {
+                            $str = $str . "WHITE";
+                            break;
+                        }
+            case self::BLACK : {
+                            $str = $str . "BLACK";
+                            break;
+                        }
+            default : {
+                    $str = $str . "0";
+                }
+        };
+
+        return $str;
     }
 
     public static function initVoid() : static {
-        return new self(self::VOID, self::VOID);
-        
+        return new self(self::VOID, self::VOID);    
     }
 
     public static function initWhiteCube() {
