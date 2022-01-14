@@ -16,8 +16,8 @@
         public function __toString() : string {
             $affichage="";
             
-            foreach($this->piecesQuantiks as $elem){
-                $affichage = $affichage . " " . $elem . "<br>";
+            foreach($this->piecesQuantiks as $i => $elem){
+                $affichage = $affichage . " " . $i . ".- " . $elem . "<br>";
             }
 
             return $affichage;
@@ -52,10 +52,10 @@
         public static function initPiecesNoires() : ArrayPieceQuantik {
             $array = new ArrayPieceQuantik();
             $array->setPieceQuantik(0, PieceQuantik::initBlackCone());
-            $array->setPieceQuantik(0, PieceQuantik::initBlackCone());
+            $array->setPieceQuantik(1, PieceQuantik::initBlackCone());
 
             $array->setPieceQuantik(2, PieceQuantik::initBlackCube());
-            $array->setPieceQuantik(2, PieceQuantik::initBlackCube());
+            $array->setPieceQuantik(3, PieceQuantik::initBlackCube());
 
             $array->addPieceQuantik(PieceQuantik::initBlackCylindre());
             $array->addPieceQuantik(PieceQuantik::initBlackCylindre());
