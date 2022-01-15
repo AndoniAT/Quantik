@@ -14,8 +14,6 @@
             for ($i = 0 ; $i < self::NBROWS ; $i++){
                 $this->cases[] = new ArrayPieceQuantik();
             }
-
-
         }
 
         public function getPiece(int $rowNum , int $colNum) : PieceQuantik{
