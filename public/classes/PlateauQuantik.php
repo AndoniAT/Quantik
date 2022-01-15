@@ -75,8 +75,21 @@
 
         public function __toString()
         {
-            // TODO: Implement __toString() method.
-            return "";
+            $sortie = "<table>";
+            $sortie = $sortie . "<tbody>";
+
+            foreach ($this->cases as $ligne){
+                $sortie = $sortie . "<tr>";
+                foreach ($ligne as $item){
+                    $sortie = $sortie . "<td>";
+                    $sortie = $sortie . $item;
+                    $sortie = $sortie . "</td>";
+                }
+                $sortie = $sortie . "</tr>";
+            }
+
+            $sortie = $sortie . "</tbody>";
+            return $sortie . "</table>";
         }
 
         public static function getCornerFromCoord(int $rowNum,int $rowCol): int {
