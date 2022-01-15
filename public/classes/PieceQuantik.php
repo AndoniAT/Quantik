@@ -95,14 +95,14 @@
     /**
      * Pour initialiser une pièce vide
      */
-    public static function initVoid() : static {
+    public static function initVoid() : PieceQuantik {
         return new self(self::VOID, self::VOID);    
     }
 
     /**
      * Pour initialiser une pièce de forme Cube blanche
      */
-    public static function initWhiteCube() {
+    public static function initWhiteCube() : PieceQuantik {
         return new self(self::CUBE, self::WHITE);
     }
 
