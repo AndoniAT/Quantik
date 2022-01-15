@@ -1,4 +1,5 @@
 <?php
+require_once ('PlateauQuantik.php');
     class ActionQuantik{
         protected PlateauQuantik $plateau;
 
