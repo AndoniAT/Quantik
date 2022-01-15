@@ -1,4 +1,5 @@
 <?php
+require_once ('ArrayPieceQuantik.php');
     class PlateauQuantik {
         public const NBROWS = 4;
         public const NBCOLS = 4;
@@ -31,12 +32,12 @@
                 $colNum = 0;
             }
 
-            return $this->cases[$rowNum][$colNum];
+            return $this->cases[$rowNum]->getPieceQuantik($colNum);
         }
 
         public function setPiece(int $rowNum , int $colNum , PieceQuantik $pieceQuantik) : void{
 
-            $this->cases[$rowNum][$colNum]=$pieceQuantik;
+            $this->cases[$rowNum]->setPieceQuantik($colNum,$pieceQuantik);
 
         }
 
@@ -52,7 +53,7 @@
 
             for ($i = 0 ; $i < self::NBROWS ;$i++)
             {
-                $res->setPieceQuantik($i,$this->cases[$i][$numCol]);
+                $res->setPieceQuantik($i,$this->cases[$i]->getPieceQuantik($numCol));
             }
 
             return $res;
@@ -65,7 +66,7 @@
             for ($i = 0 ; $i < self::NBROWS ; $i++){
                 for ($j = 0 ; $j < self::NBCOLS ; $j++){
                     if ($dir == self::getCornerFromCoord($i,$j)){
-                        $res->setPieceQuantik($taille,$this->cases[$i][$j]);
+                        $res->setPieceQuantik($taille,$this->cases[$i]->getPieceQuantik($j));
                     }
                 }
             }
@@ -80,7 +81,8 @@
 
             foreach ($this->cases as $ligne){
                 $sortie = $sortie . "<tr>";
-                foreach ($ligne as $item){
+                for ($i = 0; $i < $ligne->getTaille() ;$i++){
+                    $item = $ligne->getPieceQuantik($i);
                     $sortie = $sortie . "<td>";
                     $sortie = $sortie . $item;
                     $sortie = $sortie . "</td>";
@@ -117,4 +119,18 @@
 
 
     }
+    /*
+    $a = new PlateauQuantik();
+    echo $a;
+    echo "</br>";
+    $a->setPiece(0,2,PieceQuantik::initBlackSphere());
+    echo $a;
+    echo "<p> Ligne 0 :</p></br> ";
+    echo $a->getRow(0);
+    echo "<p> Colonne 2 :</p></br> ";
+    echo $a->getCol(2);
+    echo "<p> Corner NE </p> </br> ";
+    echo $a->getCorner(PlateauQuantik::NE);
+    echo "<p> piece 0, 2 : </p> </br> ";
+    echo $a->getPiece(0,2);*/
 ?>
