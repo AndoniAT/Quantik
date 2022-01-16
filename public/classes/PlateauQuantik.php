@@ -17,6 +17,13 @@ require_once ('ArrayPieceQuantik.php');
             }
         }
 
+        /** Donne une Pièce
+         *
+         * @param int $rowNum Coordonnée Y
+         * @param int $colNum Coordonnée X
+         *
+         * @return PieceQuantik
+         */
         public function getPiece(int $rowNum , int $colNum) : PieceQuantik{
             if ($rowNum >= self::NBROWS){
                 $rowNum = self::NBROWS-1;
@@ -35,18 +42,38 @@ require_once ('ArrayPieceQuantik.php');
             return $this->cases[$rowNum]->getPieceQuantik($colNum);
         }
 
+        /** Insère une piece sur le plateau
+         *
+         * @param int $rowNum Coordonnée Y
+         * @param int $colNum Coordonnée X
+         * @param PieceQuantik $pieceQuantik Pièce à placer
+         *
+         * @return void
+         */
         public function setPiece(int $rowNum , int $colNum , PieceQuantik $pieceQuantik) : void{
 
             $this->cases[$rowNum]->setPieceQuantik($colNum,$pieceQuantik);
 
         }
 
+        /** Donne toutes les pièces d'une ligne
+         *
+         * @param int $numRow Numéro de la ligne
+         *
+         * @return ArrayPieceQuantik
+         */
         public function getRow(int $numRow) : ArrayPieceQuantik{
 
             return $this->cases[$numRow];
 
         }
 
+        /** Donne toutes les pièces d'une colonne
+         *
+         * @param int $numCol Numéro de la colonne
+         *
+         * @return ArrayPieceQuantik
+         */
         public function getCol(int $numCol) : ArrayPieceQuantik{
 
             $res = new ArrayPieceQuantik();
@@ -59,6 +86,12 @@ require_once ('ArrayPieceQuantik.php');
             return $res;
         }
 
+        /** Donne toutes les pièces d'un coin
+         *
+         * @param int $dir Numéro d'un coin
+         *
+         * @return ArrayPieceQuantik
+         */
         public function getCorner(int $dir) : ArrayPieceQuantik{
 
             $res = new ArrayPieceQuantik();
@@ -74,6 +107,9 @@ require_once ('ArrayPieceQuantik.php');
             return $res;
         }
 
+        /**
+         * @return string
+         */
         public function __toString()
         {
             $sortie = "<table>";
@@ -94,7 +130,14 @@ require_once ('ArrayPieceQuantik.php');
             return $sortie . "</table>";
         }
 
-        public static function getCornerFromCoord(int $rowNum,int $rowCol): int {
+        /** Donne le coin auquel appartient des coordonnées
+         *
+         * @param int $rowNum Coordonnée Y
+         * @param int $rowCol Coordonnée X
+         *
+         * @return int Coin
+         */
+        public static function getCornerFromCoord(int $rowNum, int $rowCol): int {
 
             if ($rowNum<=1){
                 //on est au nord
