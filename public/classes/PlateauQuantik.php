@@ -100,6 +100,7 @@ require_once ('ArrayPieceQuantik.php');
                 for ($j = 0 ; $j < self::NBCOLS ; $j++){
                     if ($dir == self::getCornerFromCoord($i,$j)){
                         $res->setPieceQuantik($taille,$this->cases[$i]->getPieceQuantik($j));
+                        $taille++;
                     }
                 }
             }
