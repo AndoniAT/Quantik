@@ -19,5 +19,17 @@
                     </html>";
         }
 
+        public function getDivPiecesDisponibles(ArrayPieceQuantik $liste):string{
+            $res = "<div>";
+            for ($i = 0; $i < $liste->getTaille() ; $i++){
+                $res = $res ."<button type='submit' name='active' disabled >";
+                $res = $res .$liste->getPieceQuantik($i);
+                $res = $res ."</button>";
+            }
+
+
+            return $res."</div>";
+        }
+
 
     }
