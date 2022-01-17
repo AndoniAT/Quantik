@@ -1,2 +1,7 @@
 # Quantik
-Réalisé par Andoni Alonso Tort et Mathieu Barton du groupe 3
+Binômes :
+    - ALONSO TORT Andoni
+    - BARTON Mathieu
+
+Lien GIT :
+    https://github.com/AndoniAT/Quantik.git
