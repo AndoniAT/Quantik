@@ -2,6 +2,8 @@
 require_once ('PlateauQuantik.php');
 require_once ('ArrayPieceQuantik.php');
 require_once ('ActionQuantik.php');
+
+    //Classe pour la séance 2
     class GenerationPage{
 
         public function getDebutHTML():string{
