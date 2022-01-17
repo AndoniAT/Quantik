@@ -31,5 +31,18 @@
             return $res."</div>";
         }
 
+        public function getFormSelectionPiece(ArrayPieceQuantik $liste):string{
+            $res = "<form action='' method='get'>";
+
+            for ($i = 0; $i < $liste->getTaille() ; $i++){
+                $res = $res ."<input type='submit' name='coord' value='";
+                $res = $res . $i;
+                $res = $res ."'/>";
+            }
+
+
+            return $res."</form>";
+        }
+
 
     }
