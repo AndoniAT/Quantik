@@ -49,47 +49,50 @@
      */
     public function __toString() : string {
         $str = "Forme : ";
-
+        $image = '<img';
         switch($this->getForme()){
             case self::CUBE : {
+                            if($this->getCouleur() == self::WHITE){
+                                $image.=' src="../img/cube_white.png" alt="cube white" width="30" height="30"/>';
+                            } else {
+                                $image.=' src="../img/cube_black.png" alt="cube black" width="30" height="30"/>';
+                            }
                             $str = $str . "CUBE";
                             break;
                         }
             case self::CONE : {
-                            $str = $str . "CONE";
+                            if($this->getCouleur() == self::WHITE){
+                                $image.=' src="../img/cone_white.png" alt="cone white" width="30" height="30"/>';
+                            } else {
+                                $image.=' src="../img/cone_black.png" alt="cone black" width="30" height="30"/>';
+                            }
                             break;
                         }
             case self::CYLINDRE : {
-                            $str = $str . "CYLINDRE";
+                            if($this->getCouleur() == self::WHITE){
+                                $image.=' src="../img/cylindre_white.png" alt="cone white" width="30" height="30"/>';
+                            } else {
+                                $image.=' src="../img/cylindre_black.png" alt="cone black" width="30" height="30"/>';
+                            }
+                            
                             break;
                         }
             case self::SPHERE : {
-                            $str = $str . "SPHERE";
+                        if($this->getCouleur() == self::WHITE){
+                            $image.=' src="../img/sphere_white.png" alt="sphere white" width="30" height="30"/>';
+                        } else {
+                            $image.=' src="../img/sphere_black.png" alt="sphere black" width="30" height="30"/>';
+                        }
                             break;
                         }
             default : {
-                        $str = $str . "0";
+                        $image.=' src="../img/joue.png" alt="joue black" width="30" height="30"/>';
                         break;
                     }
         };
 
-        $str = $str . "  Couleur : ";
 
-        switch($this->getCouleur()){
-            case self::WHITE : {
-                            $str = $str . "WHITE";
-                            break;
-                        }
-            case self::BLACK : {
-                            $str = $str . "BLACK";
-                            break;
-                        }
-            default : {
-                    $str = $str . "0";
-                }
-        };
-
-        return $str;
+        return $image;
     }
 
     /**
