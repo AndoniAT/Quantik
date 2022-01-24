@@ -74,7 +74,6 @@
          */
         public function removePieceQuantik(int $pos) : void {
             unset($this->piecesQuantiks[$pos]);
-            $this->taille--;
         }
 
         /**

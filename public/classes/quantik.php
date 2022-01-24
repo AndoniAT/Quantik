@@ -44,6 +44,36 @@ $aq = new ActionQuantik($_SESSION['plateau']);
                     break;
                 case 'poserPiece':
                     /* TODO : action pouvant conduire à 2 états selon le résultat : posePiece ou victoire */
+                    $coord = $_GET['coord'];
+                    $ligne = $coord[1];
+                    $colonne = $coord[3];
+                    $joueur = $_SESSION['lesNoirs'];
+                    if ($_SESSION['couleurActive']==PieceQuantik::WHITE){
+                        $joueur = $_SESSION['lesBlancs'];
+                    }
+
+
+                    if ($aq->isValidePose($ligne,$colonne,$joueur->getPieceQuantik($_GET['pos']))){
+                        $piece = $joueur->getPieceQuantik($_GET['pos']);
+
+                        $aq->posePiece($ligne,$colonne,$piece);
+                        $joueur->removePieceQuantik($_GET['pos']);
+                    } else {
+                        throw new QuantikException("Action non valide");
+                    }
+
+
+                    if ($aq->isCornerWin(PlateauQuantik::getCornerFromCoord($ligne,$colonne))||$aq->isRowWin($ligne)||$aq->isColWin($colonne)){
+                        $_SESSION['etat']="victoire";
+
+                    } else {
+                        $_SESSION['etat']= "choixPiece";
+                        if ($_SESSION['couleurActive']==PieceQuantik::WHITE){
+                            $_SESSION['couleurActive']=PieceQuantik::BLACK;
+                        } else {
+                            $_SESSION['couleurActive']=PieceQuantik::WHITE;
+                        }
+                    }
                     break;
                 case 'annulerChoix':
                     /* TODO */
