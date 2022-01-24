@@ -40,6 +40,9 @@ $aq = new ActionQuantik($_SESSION['plateau']);
             switch ($_GET['action']) {
                 case 'choisirPiece':
                     /* TODO */
+
+
+                    $_SESSION['etat'] = "posePiece";
                     break;
                 case 'poserPiece':
                     /* TODO : action pouvant conduire à 2 états selon le résultat : posePiece ou victoire */
@@ -58,10 +61,14 @@ $aq = new ActionQuantik($_SESSION['plateau']);
 
 switch($_SESSION['etat']) {
     case 'choixPiece':
-        /* TODO */
+        $pieceDispo[PieceQuantik::WHITE]=$_SESSION['lesBlancs'];
+        $pieceDispo[PieceQuantik::BLACK]=$_SESSION['lesNoirs'];
+        $pageHTML.= QuantikUIGenerator::getPageSelectionPiece($pieceDispo,$_SESSION['couleurActive'],$_SESSION['plateau']);
         break;
     case 'posePiece':
-        /* TODO */
+        $pieceDispo[PieceQuantik::WHITE]=$_SESSION['lesBlancs'];
+        $pieceDispo[PieceQuantik::BLACK]=$_SESSION['lesNoirs'];
+        $pageHTML.= QuantikUIGenerator::getPagePosePiece($pieceDispo,$_SESSION['couleurActive'],$_GET['pos'],$_SESSION['plateau']);
         break;
     case 'victoire':
         /* TODO */

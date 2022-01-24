@@ -36,10 +36,10 @@ require_once ('ActionQuantik.php');
         }
 
         public function getFormSelectionPiece(ArrayPieceQuantik $liste):string{
-            $res = "<form action='' method='get'>";
+            $res = "<form action='choisirPiece' method='get'>";
 
             for ($i = 0; $i < $liste->getTaille() ; $i++){
-                $res = $res ."<button type='submit' name='coord' value='";
+                $res = $res ."<button type='submit' name='pos' value='";
                 $res = $res . $i;
                 $res = $res ."'>";
                 $res = $res . $liste->getPieceQuantik($i);
@@ -71,7 +71,7 @@ require_once ('ActionQuantik.php');
         }
 
         public function getFormPlateauQuantik(PlateauQuantik $plateauQuantik,PieceQuantik $pieceQuantik):string{
-            $sortie = "<form action='' method='get'><table>";
+            $sortie = "<form action='poserPiece' method='get'><table>";
             $sortie = $sortie . "<tbody>";
             $actionQuantik = new ActionQuantik($plateauQuantik);
 
