@@ -11,7 +11,6 @@ require_once("QuantikException.php");
 require_once("QuantikUIGenerator.php");
 
 session_start();
-
 if (isset($_GET['reset'])) { //pratique pour réinitialiser une partie à la main
     unset($_SESSION['etat']);
     unset($_SESSION['lesBlancs']);

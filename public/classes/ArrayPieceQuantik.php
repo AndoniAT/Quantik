@@ -73,7 +73,7 @@
          * @param pos : Position du tableau où se trouve la pièce que nous souhaitons supprimer
          */
         public function removePieceQuantik(int $pos) : void {
-            unset($this->piecesQuantiks[$pos]);
+            $this->piecesQuantiks[$pos]=PieceQuantik::initVoid();
         }
 
         /**
