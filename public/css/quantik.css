@@ -1,0 +1,61 @@
+html, body {
+    background: rgb(161, 157, 243);
+    color: aliceblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+.bouton_piece_blocked {
+    background-color: rgba(85, 85, 85, 0.589);
+}
+
+.piece_form_container {
+    width: 20%;
+    /*margin: 0 auto;*/
+    margin-bottom: 20px;
+    /*background-color: rgba(188, 201, 201, 0.678);*/
+    background-color: rgba(26, 26, 26, 0.678);
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    border: 2px solid black;
+    /*border-radius: 50px;*/
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+button {
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    /*background-color: crimson;*/
+}
+
+.button_cancel {
+    background-color: rgb(175, 34, 34);
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    color: white;
+}
+
+.button_cancel:hover {
+    font-size: 14px;
+    width: 102px;
+    height: 42px;
+}
+/*
+img:hover {    
+    height: 32px;
+    opacity: 0.7;
+    transform: rotate(-5deg);
+}*/

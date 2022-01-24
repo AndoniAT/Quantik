@@ -21,8 +21,8 @@ class QuantikUIGenerator
     <head>
         <meta charset='UTF-8'>
         <title>$title</title>
-        <link rel=\"stylesheet\" type=\"text/css\" href=\"quantik.css\" />
-    </head>
+        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/quantik.css\" />
+        </head>
     <body>
         <h1 class=\"quantik\">$title</h1>
         <div class='quantik'>\n";
@@ -33,7 +33,7 @@ class QuantikUIGenerator
      */
     public static function getFinHTML(): string
     {
-        return "</div></body>\n</html>";
+        return "</div></body>\n<script src='script.js'></script> </html>";
     }
 
     /**
@@ -97,7 +97,7 @@ class QuantikUIGenerator
         //TODO
         $res = "<div>";
         for ($i = 0; $i < $liste->getTaille() ; $i++){
-            $res = $res ."<button type='submit' name='active' disabled >";
+            $res = $res ."<button type='submit' name='active' class='bouton_piece_blocked' disabled >";
             $res = $res .$liste->getPieceQuantik($i);
             $res = $res ."</button>";
         }
@@ -111,17 +111,18 @@ class QuantikUIGenerator
      * @return string
      */
     public static function getFormSelectionPiece(ArrayPieceQuantik $liste): string {
-        $res = "<form action='' method='get'>";
+        $res = "<div class='piece_form_container'>";
+        $res .= "<form action='' method='get'>";
         $res .= "<input type='hidden' name='action' value='choisirPiece' />";
         for ($i = 0; $i < $liste->getTaille() ; $i++){
-            $res = $res ."<button type='submit' name='pos' value='";
+            $res = $res ."<button class='btn_turn' type='submit' name='pos' value='";
             $res = $res . $i;
             $res = $res ."'>";
             $res = $res . $liste->getPieceQuantik($i);
             $res = $res . "</button>";
         }
 
-        return $res."</form>";
+        return $res."</form> </div>";
     }
 
     /**
@@ -177,7 +178,7 @@ class QuantikUIGenerator
     public static function getFormBoutonAnnuler() : string {
         /* TODO */
         $bouton="<form action='' method='get'>";
-        $bouton.='<button type="submit" value="annulerChoix" name="action" class="button">Annuler</button>';
+        $bouton.='<button type="submit" value="annulerChoix" name="action" class="button_cancel">Annuler</button>';
         $bouton.='</form>';
         return $bouton;
     }
