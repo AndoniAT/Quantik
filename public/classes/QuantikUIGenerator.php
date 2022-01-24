@@ -132,10 +132,11 @@ class QuantikUIGenerator
      */
     public static function getFormPlateauQuantik(PlateauQuantik $plateauQuantik, PieceQuantik $pieceQuantik, int $position): string {
         //TODO : position à gérer
-        $sortie = "<form action='poserPiece' method='get'><table>";
+        $sortie = "<form action='' method='get'><table>";
         $sortie = $sortie . "<tbody>";
         $actionQuantik = new ActionQuantik($plateauQuantik);
-
+        $sortie .= "<input type='hidden' name='pos' value='".$position."'>";
+        $sortie .= "<input type='hidden' name='action' value='poserPiece'>";
         for ($j = 0; $j<$plateauQuantik::NBROWS;$j++){
             $ligne = $plateauQuantik->getRow($j);
             $sortie = $sortie . "<tr>";
