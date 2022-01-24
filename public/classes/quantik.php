@@ -40,8 +40,6 @@ $aq = new ActionQuantik($_SESSION['plateau']);
             switch ($_GET['action']) {
                 case 'choisirPiece':
                     /* TODO */
-
-
                     $_SESSION['etat'] = "posePiece";
                     break;
                 case 'poserPiece':
@@ -49,6 +47,7 @@ $aq = new ActionQuantik($_SESSION['plateau']);
                     break;
                 case 'annulerChoix':
                     /* TODO */
+                    $_SESSION['etat'] = "choixPiece";
                     break;
                 default:
                     throw new QuantikException("Action non valide");

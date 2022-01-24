@@ -175,7 +175,11 @@ class QuantikUIGenerator
      */
     public static function getFormBoutonAnnuler() : string {
         /* TODO */
-        return "<div>  formulaire pour changer de pièce</div>";
+        $bouton="<form action='' method='get'>";
+        $bouton.='<button type="submit" name="annuler" class="button">Annuler</button>';
+        $bouton.='<input type="hidden" name="action", value="annulerChoix" name="action"/>';
+        $bouton.='</form>';
+        return $bouton;
     }
 
     /**
