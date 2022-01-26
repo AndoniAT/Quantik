@@ -50,46 +50,65 @@
     public function __toString() : string {
         $str = "Forme : ";
         $image = '<img';
+        $size = '60';
+        $src = "";
+        $alt = "";
+        $class = "piece";
         switch($this->getForme()){
             case self::CUBE : {
                             if($this->getCouleur() == self::WHITE){
-                                $image.=' src="../img/cube_white.png" alt="cube white" width="30" height="30"/>';
+                                $src = "cube_white.png";
+                                $alt = "cube white";
                             } else {
-                                $image.=' src="../img/cube_black.png" alt="cube black" width="30" height="30"/>';
+                                $src = "cube_black.png";
+                                $alt = "cube black";
                             }
-                            $str = $str . "CUBE";
+                            //$image.=' src="../img/'.$src.'" alt="'.$alt.'" width="'.$size.'" height="'.$size.'"/>';
                             break;
                         }
             case self::CONE : {
                             if($this->getCouleur() == self::WHITE){
-                                $image.=' src="../img/cone_white.png" alt="cone white" width="30" height="30"/>';
+                                $src = "cone_white.png";
+                                $alt = "cone white";
                             } else {
-                                $image.=' src="../img/cone_black.png" alt="cone black" width="30" height="30"/>';
+                                $src = "cone_black.png";
+                                $alt = "cube black";
                             }
+                            //$image.=' src="../img/'.$src.'" alt="'.$alt.'" width="'.$size.'" height="'.$size.'"/>';
                             break;
                         }
             case self::CYLINDRE : {
                             if($this->getCouleur() == self::WHITE){
-                                $image.=' src="../img/cylindre_white.png" alt="cone white" width="30" height="30"/>';
+                                $src = "cylindre_white.png";
+                                $alt = "cylindre white";
                             } else {
-                                $image.=' src="../img/cylindre_black.png" alt="cone black" width="30" height="30"/>';
+                                $src = "cylindre_black.png";
+                                $alt = "cylindre black";
                             }
-                            
+                            //$image.=' src="../img/'.$src.'" alt="'.$alt.'" width="'.$size.'" height="'.$size.'"/>';
                             break;
                         }
             case self::SPHERE : {
                         if($this->getCouleur() == self::WHITE){
-                            $image.=' src="../img/sphere_white.png" alt="sphere white" width="30" height="30"/>';
+                            $src = "sphere_white.png";
+                            $alt = "sphere_white";
+                            
                         } else {
-                            $image.=' src="../img/sphere_black.png" alt="sphere black" width="30" height="30"/>';
+                            $src = "sphere_black.png";
+                            $alt = "sphere black";
                         }
-                            break;
+                        //$image.=' src="../img/'.$src.'" alt="'.$alt.'" width="'.$size.'" height="'.$size.'"/>';
+                        break;
                         }
             default : {
-                        $image.=' src="../img/joue.png" alt="joue black" width="30" height="30"/>';
+                        $src = "joue.png";
+                        $alt = "joue";
+                        $class = "none";
+                        //$image.=' src="../img/joue.png" alt="joue black" width="30" height="30"/>';
                         break;
                     }
         };
+        $image.=' src="../img/'.$src.'" class="'.$class.'" alt="'.$alt.'" width="'.$size.'" height="'.$size.'"/>';
 
 
         return $image;

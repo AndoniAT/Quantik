@@ -10,6 +10,7 @@ require_once("ActionQuantik.php");
 require_once("QuantikException.php");
 require_once("QuantikUIGenerator.php");
 
+
 session_start();
 if (isset($_GET['reset'])) { //pratique pour réinitialiser une partie à la main
     unset($_SESSION['etat']);
@@ -107,3 +108,4 @@ switch($_SESSION['etat']) {
 }
 // seul echo nécessaire toute la pageHTML a été générée dans la variable $pageHTML
 echo $pageHTML;
+require_once("script.php");
