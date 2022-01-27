@@ -32,7 +32,15 @@ class QuantikUIGenerator
      */
     public static function getFinHTML(): string
     {
-        return "</div></body>\n</html>";
+        return "</body>\n</html>";
+    }
+
+    /**
+     * @return string
+     */
+    public static function getFinDivGral(): string
+    {
+        return "</div>";
     }
 
     /**
@@ -191,6 +199,18 @@ class QuantikUIGenerator
     }
 
     /**
+     * @return string
+     */
+    public static function getFormBoutonRestart() : string {
+        /* TODO */
+        //echo 'holaaasss';
+        $bouton="<form action='' method='get' class='form_button_cancel'>";
+        $bouton.='<button type="submit" value="reset" name="reset" class="button_cancel restart">Restart</button>';
+        $bouton.='</form>';
+        return $bouton;
+    }
+
+    /**
      * @param int $couleur
      * @return string
      */
@@ -216,6 +236,7 @@ class QuantikUIGenerator
      */
     public static function getPageSelectionPiece(array $lesPiecesDispos, int $couleurActive, PlateauQuantik $plateau): string {
         $pageHTML = QuantikUIGenerator::getDebutHTML();
+        $pageHTML.= QuantikUIGenerator::getFormBoutonRestart();
         $pageHTML.= QuantikUIGenerator::getDivGral();
         if ($couleurActive == PieceQuantik::WHITE){
             $pageHTML.= self::getFormSelectionPiece($lesPiecesDispos[PieceQuantik::WHITE]);
@@ -227,7 +248,7 @@ class QuantikUIGenerator
             $pageHTML.= self::getFormSelectionPiece($lesPiecesDispos[PieceQuantik::BLACK]);
         }
         
-
+        $pageHTML.= QuantikUIGenerator::getFinDivGral();
         return $pageHTML. self::getFinHTML();
     }
 
@@ -240,7 +261,7 @@ class QuantikUIGenerator
      */
     public static function getPagePosePiece(array $lesPiecesDispos, int $couleurActive, int $posSelection, PlateauQuantik $plateau): string {
         $pageHTML = QuantikUIGenerator::getDebutHTML();
-        $pageHTML.= QuantikUIGenerator::getFormBoutonAnnuler();
+        $pageHTML.= QuantikUIGenerator::getFormBoutonRestart();
         $pageHTML.= QuantikUIGenerator::getDivGral();
         $lesBlancs = $lesPiecesDispos[PieceQuantik::WHITE];
         $lesNoirs = $lesPiecesDispos[PieceQuantik::BLACK];
@@ -254,6 +275,8 @@ class QuantikUIGenerator
             $pageHTML.= QuantikUIGenerator::getFormPlateauQuantik($plateau,$lesNoirs->getPieceQuantik($posSelection),$posSelection);
             $pageHTML.= QuantikUIGenerator::getDivPiecesDisponibles($lesNoirs,$posSelection);
         }
+        $pageHTML.= QuantikUIGenerator::getFinDivGral();
+        $pageHTML.= QuantikUIGenerator::getFormBoutonAnnuler();
         return $pageHTML . self::getFinHTML();
     }
 
@@ -264,11 +287,14 @@ class QuantikUIGenerator
      * @param PlateauQuantik $plateau
      * @return string
      */
-    public static function getPageVictoire(array $lesPiecesDispos, int $couleurActive, int $posSelection, PlateauQuantik $plateau): string {
+    public static function getPageVictoire(): string {
         $pageHTML = QuantikUIGenerator::getDebutHTML();
-
-        /* TODO */
-
+        $pageHTML.= QuantikUIGenerator::getDivGral();
+        $pageHTML.= '<div class="victory_container">';
+        $pageHTML.= '   <h3>VICTOIRE<h3> ';
+        $pageHTML.= '</div> ';
+        $pageHTML.= QuantikUIGenerator::getFinDivGral();
+        $pageHTML.= QuantikUIGenerator::getFormBoutonRestart();
         return $pageHTML . self::getFinHTML();
 
     }

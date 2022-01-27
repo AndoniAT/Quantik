@@ -184,3 +184,26 @@ table {
 table {
     height: fit-content;
 }
+
+.piece_form_container, .piece_block_container{
+    background-image: url('../img/table.jpg');
+}
+
+.piece_form_container button {
+    background-color: rgba(66, 64, 64, 0.692);
+}
+
+.victory_container {
+    background-color: rgba(173, 77, 77, 0.918);
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    margin-top: 10%;
+    margin-bottom: 20px;
+}
+
+.restart {
+    background-color: rgb(202, 201, 201);
+    color: black;
+    padding: 10px;
+}

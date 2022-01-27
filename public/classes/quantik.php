@@ -19,6 +19,7 @@ if (isset($_GET['reset'])) { //pratique pour réinitialiser une partie à la mai
     unset($_SESSION['couleurActive']);
     unset($_SESSION['plateau']);
     unset($_SESSION['message']);
+    unset($_SESSION['pieceDispo']);
 }
 
 if (empty($_SESSION)) { // initialisation des variables de session
@@ -28,6 +29,7 @@ if (empty($_SESSION)) { // initialisation des variables de session
     $_SESSION['etat'] = 'choixPiece';
     $_SESSION['couleurActive'] = PieceQuantik::WHITE;
     $_SESSION['message'] = "";
+    $_SESSION['pieceDispo'][] = "";
 }
 
 $pageHTML = "";
@@ -90,17 +92,18 @@ $aq = new ActionQuantik($_SESSION['plateau']);
 
 switch($_SESSION['etat']) {
     case 'choixPiece':
-        $pieceDispo[PieceQuantik::WHITE]=$_SESSION['lesBlancs'];
-        $pieceDispo[PieceQuantik::BLACK]=$_SESSION['lesNoirs'];
-        $pageHTML.= QuantikUIGenerator::getPageSelectionPiece($pieceDispo,$_SESSION['couleurActive'],$_SESSION['plateau']);
+        $_SESSION['pieceDispo'][PieceQuantik::WHITE]=$_SESSION['lesBlancs'];
+        $_SESSION['pieceDispo'][PieceQuantik::BLACK]=$_SESSION['lesNoirs'];
+        $pageHTML.= QuantikUIGenerator::getPageSelectionPiece($_SESSION['pieceDispo'],$_SESSION['couleurActive'],$_SESSION['plateau']);
         break;
     case 'posePiece':
-        $pieceDispo[PieceQuantik::WHITE]=$_SESSION['lesBlancs'];
-        $pieceDispo[PieceQuantik::BLACK]=$_SESSION['lesNoirs'];
-        $pageHTML.= QuantikUIGenerator::getPagePosePiece($pieceDispo,$_SESSION['couleurActive'],$_GET['pos'],$_SESSION['plateau']);
+        $_SESSION['pieceDispo'][PieceQuantik::WHITE]=$_SESSION['lesBlancs'];
+        $_SESSION['pieceDispo'][PieceQuantik::BLACK]=$_SESSION['lesNoirs'];        
+        $pageHTML.= QuantikUIGenerator::getPagePosePiece($_SESSION['pieceDispo'],$_SESSION['couleurActive'],$_GET['pos'],$_SESSION['plateau']);
         break;
     case 'victoire':
-        /* TODO */
+        //$pageHTML.= QuantikUIGenerator::getPageVictoire($_SESSION['pieceDispo'], $_SESSION['couleurActive'], $_GET['pos'], $_SESSION['plateau']);
+        $pageHTML.= QuantikUIGenerator::getPageVictoire();
         break;
     default: // sans doute etape=bug
         echo QuantikUIGenerator::getPageErreur($_SESSION['message']);

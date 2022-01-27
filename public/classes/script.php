@@ -4,21 +4,6 @@ require_once("QuantikUIGenerator.php");
 
 <script type="text/javascript">
 let body = document.querySelector("body");
-//console.log(body);
-
-    
-//let m = ;
-//console.log(m);
-
-<?php
-/*$variableAPasser = 'holq' ;
-$variableAPasser.= QuantikUIGenerator::getFormBoutonAnnuler();
-echo $variableAPasser;*/
-?>
-
-
-
-
 
 let elem_blocked = document.getElementsByClassName('bouton_piece_blocked');
 
