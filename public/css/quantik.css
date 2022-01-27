@@ -1,5 +1,5 @@
 html, body {
-    background: rgb(87, 87, 87);
+    background: rgba(134, 134, 134);
     color: aliceblue;
 }
 
@@ -99,8 +99,9 @@ img:hover {
   } */
 
 .plateau_conteneur {
-    background-color: rgb(22, 22, 22);
+    background-color: rgba(32, 32, 32, 0.918);
     border-radius: 80px;
+    border: 1px solid white;
 }
 
 .plateau_conteneur button {
@@ -110,4 +111,76 @@ img:hover {
 .form_button_cancel {
     display: flex;
     justify-content: center;
+}
+
+.plateau_non_editable tr:nth-child(1) td:nth-child(2), 
+.plateau_editable tr:nth-child(3) td:nth-child(2)  {
+    border-right: 2px solid rgba(128, 128, 128, 0.603);
+}
+
+.plateau_non_editable tr:nth-child(1) td:nth-child(1),
+.plateau_editable tr:nth-child(3) td:nth-child(1) {
+    border-top-left-radius: 80px;
+}
+
+.plateau_non_editable tr:nth-child(2) td:nth-child(2), 
+.plateau_editable tr:nth-child(4) td:nth-child(2) {    
+    border-right: 2px solid rgba(128, 128, 128, 0.603);
+    border-bottom: 2px solid rgba(128, 128, 128, 0.603);
+    border-bottom-right-radius: 50px;
+}
+
+.plateau_non_editable tr:nth-child(2) td:nth-child(1), 
+.plateau_editable tr:nth-child(4) td:nth-child(1) {       
+    border-bottom: 2px solid rgba(128, 128, 128, 0.603);
+}
+
+table {
+    border-spacing: 0;
+}
+
+.plateau_non_editable tr:nth-child(3) td:nth-child(3),
+.plateau_editable tr:nth-child(5) td:nth-child(3) {
+    border-top: 2px solid rgba(128, 128, 128, 0.603);
+    border-left: 2px solid rgba(128, 128, 128, 0.603);
+    border-top-left-radius: 50px;
+}
+
+.plateau_non_editable tr:nth-child(4) td:nth-child(3),
+.plateau_editable tr:nth-child(6) td:nth-child(3) {
+    border-left: 2px solid rgba(128, 128, 128, 0.603);
+}
+
+.plateau_non_editable tr:nth-child(3) td:nth-child(4),
+.plateau_editable tr:nth-child(5) td:nth-child(4) {
+    border-top: 2px solid rgba(128, 128, 128, 0.603);
+}
+
+.plateau_non_editable tr:nth-child(4) td:nth-child(4),
+.plateau_editable tr:nth-child(6) td:nth-child(4) {
+    border-bottom-right-radius: 80px;
+}
+
+
+.plateau_non_editable tr:nth-child(2) td:nth-child(2),
+.plateau_non_editable tr:nth-child(2) td:nth-child(1),
+.plateau_non_editable tr:nth-child(1) td:nth-child(1), 
+.plateau_non_editable tr:nth-child(1) td:nth-child(2),
+.plateau_non_editable tr:nth-child(3) td:nth-child(3),
+.plateau_non_editable tr:nth-child(4) td:nth-child(3),
+.plateau_non_editable tr:nth-child(3) td:nth-child(4),
+.plateau_non_editable tr:nth-child(4) td:nth-child(4),
+.plateau_editable tr:nth-child(4) td:nth-child(1),
+.plateau_editable tr:nth-child(3) td:nth-child(1),
+.plateau_editable tr:nth-child(3) td:nth-child(2),
+.plateau_editable tr:nth-child(4) td:nth-child(2),
+.plateau_editable tr:nth-child(5) td:nth-child(3),
+.plateau_editable tr:nth-child(5) td:nth-child(4),
+.plateau_editable tr:nth-child(6) td:nth-child(3),
+.plateau_editable tr:nth-child(6) td:nth-child(4) {
+    background-color: rgba(65, 65, 65, 0.952);
+}
+
+table {
+    height: fit-content;
 }

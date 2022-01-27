@@ -76,7 +76,7 @@ class QuantikUIGenerator
      */
     public static function getDivPlateauQuantik(PlateauQuantik $plateauQuantik): string
     {
-        $sortie = "<div class='plateau_conteneur'><table>";
+        $sortie = "<div class='plateau_conteneur plateau_non_editable'><table>";
         $sortie = $sortie . "<tbody>";
 
         for ($j = 0; $j<$plateauQuantik::NBROWS;$j++){
@@ -140,7 +140,7 @@ class QuantikUIGenerator
      */
     public static function getFormPlateauQuantik(PlateauQuantik $plateauQuantik, PieceQuantik $pieceQuantik, int $position): string {
         //TODO : position à gérer
-        $sortie = "<form action='' method='get' class='form_plateau'><table class='plateau_conteneur'>";
+        $sortie = "<form action='' method='get' class='form_plateau'><table class='plateau_conteneur plateau_editable'>";
         $sortie = $sortie . "<tbody>";
         $actionQuantik = new ActionQuantik($plateauQuantik);
         $sortie .= "<input type='hidden' name='pos' value='".$position."'>";
