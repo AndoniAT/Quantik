@@ -102,8 +102,7 @@ switch($_SESSION['etat']) {
         $pageHTML.= QuantikUIGenerator::getPagePosePiece($_SESSION['pieceDispo'],$_SESSION['couleurActive'],$_GET['pos'],$_SESSION['plateau']);
         break;
     case 'victoire':
-        //$pageHTML.= QuantikUIGenerator::getPageVictoire($_SESSION['pieceDispo'], $_SESSION['couleurActive'], $_GET['pos'], $_SESSION['plateau']);
-        $pageHTML.= QuantikUIGenerator::getPageVictoire();
+        $pageHTML.= QuantikUIGenerator::getPageVictoire($_SESSION['couleurActive']);
         break;
     default: // sans doute etape=bug
         echo QuantikUIGenerator::getPageErreur($_SESSION['message']);

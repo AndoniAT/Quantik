@@ -1,9 +1,9 @@
 <?php
 
 
-namespace quantik;
+//namespace quantik;
 
-use \Exception;
+//use \Exception;
 
 class QuantikException extends \Exception
 {

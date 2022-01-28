@@ -1,5 +1,7 @@
 <?php
 
+use QuantikUIGenerator as GlobalQuantikUIGenerator;
+
 require_once "PlateauQuantik.php";
 require_once "ArrayPieceQuantik.php";
 require_once "PieceQuantik.php";
@@ -11,6 +13,7 @@ class QuantikUIGenerator
 {
 
     /**
+     * Fonction qui retourne le principe de la structure de notre page
      * @param string $title
      * @return string
      */
@@ -28,6 +31,7 @@ class QuantikUIGenerator
     }
 
     /**
+     * Fonction qui retourn la clousure de balises de notre HTML
      * @return string
      */
     public static function getFinHTML(): string
@@ -36,14 +40,7 @@ class QuantikUIGenerator
     }
 
     /**
-     * @return string
-     */
-    public static function getFinDivGral(): string
-    {
-        return "</div>";
-    }
-
-    /**
+     * Principe du div qui contient notre jeu
      * @return string
      */
     public static function getDivGral(): string
@@ -52,6 +49,16 @@ class QuantikUIGenerator
     }
 
     /**
+     * Fin du div qui contient le jeu
+     * @return string
+     */
+    public static function getFinDivGral(): string
+    {
+        return "</div>";
+    }
+
+    /**
+     * Page non trouvé
      * @param string $message
      * @return string
      */
@@ -66,6 +73,7 @@ class QuantikUIGenerator
     }
 
     /**
+     * 
      * @param PieceQuantik $pq
      * @return string
      */
@@ -104,6 +112,7 @@ class QuantikUIGenerator
     }
 
     /**
+     * Affichage du conteneur de pieces bloquées
      * @param ArrayPieceQuantik $apq
      * @param int $pos permet d'identifier la pièce qui a été sélectionnée par l'utilisateur avant de la poser (si != -1)
      * @return string
@@ -122,6 +131,7 @@ class QuantikUIGenerator
     }
 
     /**
+     * Affichage de boutons des pièces pour les selectionnes avant de jouer
      * @param ArrayPieceQuantik $apq
      * @return string
      */
@@ -141,6 +151,7 @@ class QuantikUIGenerator
     }
 
     /**
+     * Affichage du plateau active pour selectionner une position
      * @param PlateauQuantik $plateau
      * @param PieceQuantik $piece
      * @param int $position position de la pièce qui sera posée en vue de la transmettre via un champ caché du formulaire
@@ -181,17 +192,14 @@ class QuantikUIGenerator
 
         $sortie = $sortie . "</tbody>";
         $sortie .= "</table></form>";
-        // ajout d'un formulaire pour modifier le choix de la pièce à poser
-        //$sortie .= self::getFormBoutonAnnuler();
         return $sortie;
     }
 
     /**
+     * Biouton pour annuler le jeu et choisir autre fois une piece
      * @return string
      */
     public static function getFormBoutonAnnuler() : string {
-        /* TODO */
-        //echo 'holaaasss';
         $bouton="<form action='' method='get' class='form_button_cancel'>";
         $bouton.='<button type="submit" value="annulerChoix" name="action" class="button_cancel">Annuler</button>';
         $bouton.='</form>';
@@ -199,11 +207,10 @@ class QuantikUIGenerator
     }
 
     /**
+     * Recommencer le jeu
      * @return string
      */
     public static function getFormBoutonRestart() : string {
-        /* TODO */
-        //echo 'holaaasss';
         $bouton="<form action='' method='get' class='form_button_cancel'>";
         $bouton.='<button type="submit" value="reset" name="reset" class="button_cancel restart">Restart</button>';
         $bouton.='</form>';
@@ -211,16 +218,28 @@ class QuantikUIGenerator
     }
 
     /**
+     * Le message qui annonce la couleur qui a gagné
      * @param int $couleur
      * @return string
      */
     public static function getDivMessageVictoire(int $couleur) : string {
         /* TODO div annonçant la couleur victorieuse et proposant un lien pour recommencer une nouvelle partie */
+        $couleurVictoire = "";
+        switch($couleur) {
+            case 1:
+                    $couleurVictoire.="Noirs";
+                    break;
+            default: $couleurVictoire.="Blancs";
+        }
         $resultat ="";
+        $resultat.= '<div class="victory_container">';
+        $resultat.= '   <h3>VICTOIRE ' . $couleurVictoire .' <h3> ';
+        $resultat.= '</div> ';
         return $resultat;
     }
 
     /**
+     * Recommencer le jeu
      * @return string
      */
     public static function getLienRecommencer():string {
@@ -287,12 +306,10 @@ class QuantikUIGenerator
      * @param PlateauQuantik $plateau
      * @return string
      */
-    public static function getPageVictoire(): string {
+    public static function getPageVictoire(int $couleur): string {
         $pageHTML = QuantikUIGenerator::getDebutHTML();
         $pageHTML.= QuantikUIGenerator::getDivGral();
-        $pageHTML.= '<div class="victory_container">';
-        $pageHTML.= '   <h3>VICTOIRE<h3> ';
-        $pageHTML.= '</div> ';
+        $pageHTML.= GlobalQuantikUIGenerator::getDivMessageVictoire($couleur);
         $pageHTML.= QuantikUIGenerator::getFinDivGral();
         $pageHTML.= QuantikUIGenerator::getFormBoutonRestart();
         return $pageHTML . self::getFinHTML();
